@@ -1,6 +1,8 @@
+import datetime as dt
 from flask import Flask
 
 app = Flask(__name__)
+now = dt.datetime.now()
 
 
 @app.route("/")
@@ -10,7 +12,10 @@ def hello():
 
 @app.route("/status")
 def status():
-    return "I'am OK!"
+    return {
+        'Status': True,
+        'Time': now.strftime("%d-%m-%Y %H:%M")
+    }
 
 
 app.run()
