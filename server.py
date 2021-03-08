@@ -3,7 +3,7 @@ from flask import Flask, request
 
 app = Flask(__name__)
 
-message = [
+messages = [
     {'username': 'jack', 'text': 'Hello', 'time': time.time()},
 ]
 
@@ -24,7 +24,7 @@ def status():
 @app.route("/history")
 def history():
     """
-    request: -
+    request: ?after=1234567890.4576
     response: {
         'messages': [
             {'username': 'str', 'text': 'str', 'time': float},
@@ -32,7 +32,12 @@ def history():
         ]
     }
     """
-    return {'messages': message}
+    after = float(request.args['after'])
+
+    # отфильтровываем сообщения и добавляет только те, которые пришли позже after
+    filter_messages = [message for message in messages if message['time'] > after]
+
+    return {'messages': filter_messages}
 
 
 @app.route("/send", methods=['POST'])
@@ -45,8 +50,9 @@ def send():
     username = data['username']
     text = data['text']
 
-    message.append({'username': username, 'text': text, 'time': time.time()})
+    messages.append({'username': username, 'text': text, 'time': time.time()})
 
     return {'ok': True}
+
 
 app.run()
