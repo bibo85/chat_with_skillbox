@@ -2,6 +2,8 @@ import requests
 
 print('Enter username:')
 username = input()
+print('Enter password:')
+password = input()
 
 while True:
     print('Enter message:')
@@ -9,5 +11,5 @@ while True:
 
     response = requests.post(
         'http://127.0.0.1:5000/send',
-        json={'username': username, 'text': text}
+        json={'username': username, 'password': password, 'text': text}
     )
