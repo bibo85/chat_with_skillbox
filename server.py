@@ -5,7 +5,14 @@ app = Flask(__name__)
 
 messages = [
     {'username': 'jack', 'text': 'Hello', 'time': time.time()},
+    {'username': 'mary', 'text': 'Hi, jack', 'time': time.time()},
 ]
+
+users = {
+    # username: password
+    'jack': 'black',
+    'mary': '12345',
+}
 
 
 @app.route("/")
@@ -43,12 +50,22 @@ def history():
 @app.route("/send", methods=['POST'])
 def send():
     """
-    request: {'username': 'str', 'text': 'str'}
+    request: {'username': 'str', 'password': 'str' 'text': 'str'}
     response: {'ok': 'true'}
     """
     data = request.json
     username = data['username']
+    password = data['password']
     text = data['text']
+
+    # если такой пользователь существует -> проверяем пароль
+    # иначе -> регистрируем нового пользователя
+    if username is users:
+        real_password = users['username']
+        if real_password != password:
+            return {'ok': False}
+    else:
+        users[username] = password
 
     messages.append({'username': username, 'text': text, 'time': time.time()})
 
