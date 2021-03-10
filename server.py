@@ -60,8 +60,8 @@ def send():
 
     # если такой пользователь существует -> проверяем пароль
     # иначе -> регистрируем нового пользователя
-    if username is users:
-        real_password = users['username']
+    if username in users:
+        real_password = users[username]
         if real_password != password:
             return {'ok': False}
     else:
