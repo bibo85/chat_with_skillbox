@@ -24,7 +24,9 @@ def hello():
 def status():
     return {
         'Status': True,
-        'Time': time.time()
+        'Time': time.time(),
+        'Total Users': len(users),
+        'Total Messages': len(messages),
     }
 
 
