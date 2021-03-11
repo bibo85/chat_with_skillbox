@@ -10,11 +10,11 @@
 from PyQt5 import QtCore, QtGui, QtWidgets
 
 
-class Ui_Messenger(QtWidgets.QMainWindow):
-    def setupUi(self, Messenger):
-        Messenger.setObjectName("Messenger")
-        Messenger.resize(411, 501)
-        self.centralwidget = QtWidgets.QWidget(Messenger)
+class Ui_Messanger(object):
+    def setupUi(self, Messanger):
+        Messanger.setObjectName("Messanger")
+        Messanger.resize(411, 501)
+        self.centralwidget = QtWidgets.QWidget(Messanger)
         self.centralwidget.setObjectName("centralwidget")
         self.label = QtWidgets.QLabel(self.centralwidget)
         self.label.setGeometry(QtCore.QRect(40, 0, 321, 51))
@@ -52,24 +52,18 @@ class Ui_Messenger(QtWidgets.QMainWindow):
         font.setPointSize(10)
         self.label_3.setFont(font)
         self.label_3.setObjectName("label_3")
-        Messenger.setCentralWidget(self.centralwidget)
-        self.statusbar = QtWidgets.QStatusBar(Messenger)
+        Messanger.setCentralWidget(self.centralwidget)
+        self.statusbar = QtWidgets.QStatusBar(Messanger)
         self.statusbar.setObjectName("statusbar")
-        Messenger.setStatusBar(self.statusbar)
+        Messanger.setStatusBar(self.statusbar)
 
-        self.retranslateUi(Messenger)
-        QtCore.QMetaObject.connectSlotsByName(Messenger)
+        self.retranslateUi(Messanger)
+        QtCore.QMetaObject.connectSlotsByName(Messanger)
 
-    def retranslateUi(self, Messenger):
+    def retranslateUi(self, Messanger):
         _translate = QtCore.QCoreApplication.translate
-        Messenger.setWindowTitle(_translate("Messenger", "MainWindow"))
-        self.label.setText(_translate("Messenger", "Skillbox Messenger"))
-        self.pushButton.setText(_translate("Messenger", "Send"))
-        self.label_2.setText(_translate("Messenger", "Username:"))
-        self.label_3.setText(_translate("Messenger", "Password:"))
-
-
-app = QtWidgets.QApplication([])
-window = Ui_Messenger()
-window.show()
-app.exec()
+        Messanger.setWindowTitle(_translate("Messanger", "MainWindow"))
+        self.label.setText(_translate("Messanger", "Skillbox Messenger"))
+        self.pushButton.setText(_translate("Messanger", "Send"))
+        self.label_2.setText(_translate("Messanger", "Username:"))
+        self.label_3.setText(_translate("Messanger", "Password:"))
