@@ -14,5 +14,5 @@ while True:
         json={'username': username, 'password': password, 'text': text}
     )
     if not response.json()['ok']:
-        print('Access denied')
+        print('Wrong password, access denied')
         break
